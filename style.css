@@ -1,0 +1,206 @@
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #131313;
+}
+
+.container {
+  position: relative;
+  perspective: 1000px;
+}
+
+.card {
+  width: 320px;
+  height: 450px;
+  margin: 1em;
+  perspective: 1500px;
+  background: #232323;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.card .content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.btn {
+  display: none;
+}
+.btn:checked ~ .content {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: 0.5s;
+}
+.card-front .inner,
+.card-back .inner {
+  height: 80%;
+  display: grid;
+  padding: 1.5em;
+  transform: translateZ(80px) scale(0.94);
+}
+
+.card-front {
+  background-position: 50% 50%;
+  background-size: cover;
+}
+.card-front h2 {
+  grid-row: 2;
+  margin-bottom: 0.3em;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #fff;
+  font-weight: 500;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+.card-front .inner {
+  grid-template-rows: 5fr 1fr 1fr 2fr 1fr;
+  justify-items: center;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background-color: #fff;
+}
+.card-back .inner {
+  grid-template-rows: 1fr 2fr 1fr 2fr 14fr 1fr 1fr;
+  justify-items: center;
+}
+.card-back .price {
+  color: #000;
+  font-size: 18px;
+  margin-top: 10px;
+  grid-column: 1/-1;
+  justify-self: centers;
+}
+
+.contentBox {
+  opacity: 1;
+  visibility: visible;
+}
+.contentBox h2 {
+  position: relative;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #000;
+  margin: 20px;
+  font-size: 20px;
+}
+
+.size,
+.color {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  padding: 10px 30px;
+  visibility: visible;
+}
+
+.contentBox .color span {
+  width: 30px;
+  height: 30px;
+  background: #000;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.container .card .contentBox .color span:nth-child(2) {
+  background: #f5b431;
+}
+
+.container .card .contentBox .color span:nth-child(3) {
+  background: #03a9f4;
+}
+
+.container .card .contentBox .color span:nth-child(4) {
+  background: #e91e63;
+}
+
+.contentBox .size span {
+  width: 26px;
+  height: 26px;
+  text-align: center;
+  line-height: 26px;
+  font-size: 14px;
+  display: inline-block;
+  color: #000;
+  background: #fff;
+  margin: 0 5px;
+  transition: 0.5s;
+  color: #000;
+  border-radius: 4px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.container .card .contentBox .size span:hover {
+  background: #f5b431;
+}
+
+.size h3,
+.color h3 {
+  color: #000;
+  font-weight: 300;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-right: 10px;
+}
+
+.button {
+  grid-row: -1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+  padding: 0 1.5em;
+  height: 3em;
+  line-height: 2.9em;
+  min-width: 3em;
+  background-color: transparent;
+  border: solid 2px #fff;
+  color: #fff;
+  border-radius: 4px;
+  text-align: center;
+  left: 50%;
+  backface-visibility: hidden;
+  transition: 0.3s ease-in-out;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.button:hover {
+  background-color: #fff;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  text-shadow: none;
+  color: #355cc9;
+}
+.button.return {
+  line-height: 3em;
+  color: #000;
+  border-color: #355cc9;
+  text-shadow: none;
+}
+.button.return:hover {
+  background-color: #355cc9;
+  color: #fff;
+  box-shadow: none;
+}
